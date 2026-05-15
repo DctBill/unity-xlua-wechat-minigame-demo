@@ -1,0 +1,340 @@
+{
+    "Summary": {
+        "YooVersion": "2.3.18",
+        "UnityVersion": "2022.3.27f1c1",
+        "BuildDate": "2026/4/7 17:06:56",
+        "BuildSeconds": 16,
+        "BuildTarget": 20,
+        "BuildPipeline": "ScriptableBuildPipeline",
+        "BuildBundleType": 2,
+        "BuildPackageName": "DefaultPackage",
+        "BuildPackageVersion": "2026-04-07-1026",
+        "BuildPackageNote": "2026/4/7 17:06:40",
+        "UniqueBundleName": false,
+        "EnableAddressable": false,
+        "SupportExtensionless": true,
+        "LocationToLower": false,
+        "IncludeAssetGUID": false,
+        "AutoCollectShaders": true,
+        "IgnoreRuleName": "YooAsset.Editor.NormalIgnoreRule",
+        "ClearBuildCacheFiles": false,
+        "UseAssetDependencyDB": false,
+        "EnableSharePackRule": true,
+        "SingleReferencedPackAlone": true,
+        "EncryptionServicesClassName": "YooAsset.Editor.EncryptionNone",
+        "ManifestProcessServicesClassName": "YooAsset.Editor.ManifestProcessNone",
+        "ManifestRestoreServicesClassName": "YooAsset.Editor.ManifestRestoreNone",
+        "FileNameStyle": 1,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": true,
+        "ReplaceAssetPathWithAddress": false,
+        "WriteLinkXML": true,
+        "CacheServerHost": "",
+        "CacheServerPort": 0,
+        "BuiltinShadersBundleName": "unityshaders.bundle",
+        "MonoScriptsBundleName": "",
+        "AssetFileTotalCount": 9,
+        "MainAssetTotalCount": 9,
+        "AllBundleTotalCount": 4,
+        "AllBundleTotalSize": 1518442,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+            "AssetGUID": "f6730b960ba6c914e9141395fc93249f",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_materials.bundle",
+            "MainBundleSize": 3035,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Chicken_001.fbx",
+            "AssetGUID": "605d0caffe3b2fe489bc37e772cb7496",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Deer_001.fbx",
+            "AssetGUID": "f612768321ebc364fa742fa8bbfadb5e",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Dog_001.fbx",
+            "AssetGUID": "0c0f883d7bc25dd4d84c3c7795a4a332",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Horse_001.fbx",
+            "AssetGUID": "33246b64c1371e444b73335f655fc158",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Kitty_001.fbx",
+            "AssetGUID": "31d2c91682ac6f045b4b75ebf27e5d77",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Pinguin_001.fbx",
+            "AssetGUID": "a2ef474392ac74f409c70c61ccb6c24a",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Tiger_001.fbx",
+            "AssetGUID": "8739604ff156c91408e3f6352de03dbc",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "MainBundleSize": 1056189,
+            "DependAssets": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ]
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+            "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666",
+            "AssetTags": [],
+            "MainBundleName": "assets_ithappy_animals_free_textures.bundle",
+            "MainBundleSize": 406945,
+            "DependAssets": [],
+            "DependBundles": []
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "assets_ithappy_animals_free_materials.bundle",
+            "FileName": "assets_ithappy_animals_free_materials.bundle",
+            "FileHash": "53ec506ee981fadfb8f282a0994087ab",
+            "FileCRC": 574852465,
+            "FileSize": 3035,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ],
+            "ReferenceBundles": [
+                "assets_ithappy_animals_free_meshes.bundle"
+            ],
+            "BundleContents": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Materials/Material.mat",
+                    "AssetGUID": "f6730b960ba6c914e9141395fc93249f"
+                }
+            ]
+        },
+        {
+            "BundleName": "assets_ithappy_animals_free_meshes.bundle",
+            "FileName": "assets_ithappy_animals_free_meshes.bundle",
+            "FileHash": "94c14fb8b009c39c265754d9a40670b4",
+            "FileCRC": 664565614,
+            "FileSize": 1056189,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_textures.bundle",
+                "unityshaders.bundle"
+            ],
+            "ReferenceBundles": [],
+            "BundleContents": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Chicken_001.fbx",
+                    "AssetGUID": "605d0caffe3b2fe489bc37e772cb7496"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Deer_001.fbx",
+                    "AssetGUID": "f612768321ebc364fa742fa8bbfadb5e"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Dog_001.fbx",
+                    "AssetGUID": "0c0f883d7bc25dd4d84c3c7795a4a332"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Horse_001.fbx",
+                    "AssetGUID": "33246b64c1371e444b73335f655fc158"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Kitty_001.fbx",
+                    "AssetGUID": "31d2c91682ac6f045b4b75ebf27e5d77"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Pinguin_001.fbx",
+                    "AssetGUID": "a2ef474392ac74f409c70c61ccb6c24a"
+                },
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Meshes/Tiger_001.fbx",
+                    "AssetGUID": "8739604ff156c91408e3f6352de03dbc"
+                }
+            ]
+        },
+        {
+            "BundleName": "assets_ithappy_animals_free_textures.bundle",
+            "FileName": "assets_ithappy_animals_free_textures.bundle",
+            "FileHash": "69c42ffcf6f996af8185b39155eee9d5",
+            "FileCRC": 444950241,
+            "FileSize": 406945,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "ReferenceBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_meshes.bundle"
+            ],
+            "BundleContents": [
+                {
+                    "AssetPath": "Assets/ithappy/Animals_FREE/Textures/Texture.png",
+                    "AssetGUID": "5bf4d5ffdfd914a48be4d1bf61c86666"
+                }
+            ]
+        },
+        {
+            "BundleName": "unityshaders.bundle",
+            "FileName": "unityshaders.bundle",
+            "FileHash": "598f107eea354a57997412b922693819",
+            "FileCRC": 3483404365,
+            "FileSize": 52273,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "ReferenceBundles": [
+                "assets_ithappy_animals_free_materials.bundle",
+                "assets_ithappy_animals_free_meshes.bundle"
+            ],
+            "BundleContents": []
+        }
+    ],
+    "IndependAssets": []
+}

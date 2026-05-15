@@ -1,0 +1,31 @@
+local inventory = {
+    slime_gel = 0,
+    heavy_core = 0,
+    flame_shard = 0
+}
+
+function inventory.reset()
+    inventory.slime_gel = 0
+    inventory.heavy_core = 0
+    inventory.flame_shard = 0
+end
+
+function inventory.add(materialKey, count)
+    inventory[materialKey] = (inventory[materialKey] or 0) + (count or 1)
+end
+
+function inventory.export_save()
+    return {
+        slime_gel = inventory.slime_gel,
+        heavy_core = inventory.heavy_core,
+        flame_shard = inventory.flame_shard
+    }
+end
+
+function inventory.import_save(data)
+    inventory.slime_gel = data.SlimeGel or 0
+    inventory.heavy_core = data.HeavyCore or 0
+    inventory.flame_shard = data.FlameShard or 0
+end
+
+return inventory

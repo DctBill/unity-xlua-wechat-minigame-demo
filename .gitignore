@@ -1,0 +1,53 @@
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+Recordings/
+
+# Visual Studio / Rider
+.vs/
+.idea/
+.gradle/
+ExportedObj/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package cache
+Packages/packages-lock.json
+
+# Auto generated crash / debug data
+sysinfo.txt
+*.stacktrace
+
+# Build output archives
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.exe
+*.ipa
+*.wasm
+
+# Keep source assets and tracked generated bindings
+!Assets/XLua/Gen/

@@ -1,0 +1,36 @@
+local controller = require("Lua.slime_game.controller")
+local texts = require("Lua.slime_game.texts")
+
+local app = {}
+
+function app:LoadProgress()
+    if not controller:load_progress() then
+        controller:save_progress()
+    end
+end
+
+function app:ResetGame()
+    controller:reset()
+end
+
+function app:Tick(dt)
+    return controller:tick(dt)
+end
+
+function app:AttackEnemy()
+    controller:attack_enemy()
+end
+
+function app:UseSkill()
+    controller:use_skill()
+end
+
+function app:GetGameState()
+    return controller:get_game_state()
+end
+
+function app:GetUiTexts()
+    return texts.get_ui_texts()
+end
+
+return app

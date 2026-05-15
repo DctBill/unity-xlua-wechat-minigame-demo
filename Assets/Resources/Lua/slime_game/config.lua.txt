@@ -1,0 +1,48 @@
+local config = {
+    player = {
+        start_level = 1,
+        start_attack = 5,
+        gold_per_kill = 1,
+        gold_per_level = 5,
+        attack_growth_per_level = 2,
+        crit_chance = 0.25,
+        crit_multiplier = 2,
+        skill_multiplier = 3,
+        skill_cooldown = 5
+    },
+    enemy = {
+        hp_growth_per_defeat = 2,
+        list = {
+            {
+                id = 1,
+                name = "史莱姆",
+                base_hp = 12,
+                gold = 1,
+                drop_key = "slime_gel",
+                color = { 0.55, 1.0, 0.55 }
+            },
+            {
+                id = 2,
+                name = "大史莱姆",
+                base_hp = 18,
+                gold = 2,
+                drop_key = "heavy_core",
+                color = { 0.4, 0.85, 1.0 }
+            },
+            {
+                id = 3,
+                name = "火史莱姆",
+                base_hp = 15,
+                gold = 3,
+                drop_key = "flame_shard",
+                color = { 1.0, 0.55, 0.35 }
+            }
+        }
+    },
+    flow = {
+        tick_math_loop = 120,
+        idle_hint_delay = 5
+    }
+}
+
+return config

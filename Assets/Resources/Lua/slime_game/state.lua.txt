@@ -1,0 +1,105 @@
+local config = require("Lua.slime_game.config")
+local texts = require("Lua.slime_game.texts")
+
+local state = {
+    play_time = 0,
+    idle_hint_timer = 0,
+    message = texts.messages.start,
+    last_damage = 0,
+    last_drop_text = "",
+    last_attack_was_crit = false,
+    last_attack_was_skill = false,
+    skill_cooldown_remaining = 0
+}
+
+function state:reset()
+    self.play_time = 0
+    self.idle_hint_timer = 0
+    self.message = texts.messages.reset
+    self.last_damage = 0
+    self.last_drop_text = ""
+    self.last_attack_was_crit = false
+    self.last_attack_was_skill = false
+    self.skill_cooldown_remaining = 0
+end
+
+function state:set_message(value)
+    self.message = value
+end
+
+function state:set_last_attack(damage, isCrit, isSkill)
+    self.last_damage = damage
+    self.last_attack_was_crit = isCrit
+    self.last_attack_was_skill = isSkill or false
+end
+
+function state:set_last_drop_text(value)
+    self.last_drop_text = value or ""
+end
+
+function state:start_skill_cooldown()
+    self.skill_cooldown_remaining = config.player.skill_cooldown
+end
+
+function state:is_skill_ready()
+    return self.skill_cooldown_remaining <= 0
+end
+
+function state:tick_time(dt)
+    self.play_time = self.play_time + dt
+    self.idle_hint_timer = self.idle_hint_timer + dt
+    self.skill_cooldown_remaining = math.max(0, self.skill_cooldown_remaining - dt)
+end
+
+function state:reset_idle_hint_timer()
+    self.idle_hint_timer = 0
+end
+
+function state:should_show_idle_hint()
+    return self.idle_hint_timer >= config.flow.idle_hint_delay
+end
+
+function state:export_save()
+    return {
+        play_time = self.play_time,
+        skill_cooldown_remaining = self.skill_cooldown_remaining
+    }
+end
+
+function state:import_save(data)
+    self.play_time = data.PlayTime or 0
+    self.idle_hint_timer = 0
+    self.last_damage = 0
+    self.last_drop_text = ""
+    self.last_attack_was_crit = false
+    self.last_attack_was_skill = false
+    self.skill_cooldown_remaining = data.SkillCooldownRemaining or 0
+end
+
+function state:export(player, enemy, inventory)
+    local inventorySummary = texts.format_inventory_summary(inventory.slime_gel, inventory.heavy_core, inventory.flame_shard)
+    return {
+        PlayerLevel = player.level,
+        PlayerAttack = player.attack,
+        Gold = player.gold,
+        EnemyId = enemy.current_id,
+        EnemyName = enemy.name,
+        EnemyHp = enemy.hp,
+        EnemyMaxHp = enemy.max_hp,
+        EnemyGold = enemy.reward_gold,
+        EnemyColorR = enemy.color[1],
+        EnemyColorG = enemy.color[2],
+        EnemyColorB = enemy.color[3],
+        Message = self.message,
+        InventorySummary = inventorySummary,
+        LastDropText = self.last_drop_text,
+        PlayTime = self.play_time,
+        LastDamage = self.last_damage,
+        LastAttackWasCrit = self.last_attack_was_crit,
+        LastAttackWasSkill = self.last_attack_was_skill,
+        SkillCooldownRemaining = self.skill_cooldown_remaining,
+        SkillReady = self:is_skill_ready()
+    }
+end
+
+return state

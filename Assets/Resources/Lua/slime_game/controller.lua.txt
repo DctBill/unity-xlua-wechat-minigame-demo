@@ -1,0 +1,159 @@
+local config = require("Lua.slime_game.config")
+local texts = require("Lua.slime_game.texts")
+local player = require("Lua.slime_game.player")
+local enemy = require("Lua.slime_game.enemy")
+local inventory = require("Lua.slime_game.inventory")
+local battle = require("Lua.slime_game.battle")
+local state = require("Lua.slime_game.state")
+
+local controller = {}
+
+function controller:save_progress()
+    if saveBridge == nil then
+        return
+    end
+
+    saveBridge:SaveGame(
+        player.level,
+        player.attack,
+        player.gold,
+        enemy.current_id,
+        enemy.name,
+        enemy.hp,
+        enemy.max_hp,
+        enemy.reward_gold,
+        enemy.defeated_count,
+        inventory.slime_gel,
+        inventory.heavy_core,
+        inventory.flame_shard,
+        state.play_time,
+        state.skill_cooldown_remaining)
+end
+
+function controller:load_progress()
+    if saveBridge == nil or not saveBridge:HasSave() then
+        return false
+    end
+
+    local data = saveBridge:LoadGame()
+    if data == nil then
+        return false
+    end
+
+    player.import_save(data)
+    enemy.import_save(data)
+    inventory.import_save(data)
+    state:import_save(data)
+    state:set_message(texts.messages.load_success)
+    logBridge:Log(texts.messages.load_success)
+    return true
+end
+
+function controller:reset()
+    player.reset()
+    enemy.reset()
+    inventory.reset()
+    state:reset()
+    self:save_progress()
+    logBridge:Log(state.message)
+end
+
+function controller:tick(dt)
+    local sum = 0
+    for i = 1, config.flow.tick_math_loop do
+        sum = sum + math.sin(state.play_time + i)
+    end
+
+    state:tick_time(dt)
+
+    if state:should_show_idle_hint() then
+        state:set_message(texts.messages.idle_hint)
+        state:reset_idle_hint_timer()
+    end
+
+    return sum
+end
+
+function controller:attack_enemy()
+    local damage, killed, isCrit = battle.attack(player, enemy)
+    state:set_last_attack(damage, isCrit, false)
+    state:reset_idle_hint_timer()
+
+    if killed then
+        local dropName = texts.get_material_name(enemy.drop_key)
+        inventory.add(enemy.drop_key, 1)
+        state:set_last_drop_text(texts.format_material_gain(dropName, 1))
+        local upgraded = player.add_gold(enemy.reward_gold)
+        local kill_message
+        if isCrit then
+            kill_message = texts.format_crit_kill(enemy.name, damage, enemy.reward_gold)
+        else
+            kill_message = texts.format_kill(enemy.name, enemy.reward_gold)
+        end
+        state:set_message(kill_message)
+        logBridge:Log(kill_message)
+        enemy.respawn()
+
+        if upgraded then
+            local upgrade_message = texts.format_upgrade(player.level, player.attack)
+            state:set_message(upgrade_message)
+            logBridge:Log(upgrade_message)
+        end
+
+        self:save_progress()
+        return
+    end
+
+    if isCrit then
+        state:set_message(texts.format_crit_damage(enemy.name, damage))
+    else
+        state:set_message(texts.format_damage(enemy.name, damage))
+    end
+    state:set_last_drop_text("")
+
+    self:save_progress()
+end
+
+function controller:use_skill()
+    if not state:is_skill_ready() then
+        state:set_message(texts.format_skill_cooling(state.skill_cooldown_remaining))
+        return
+    end
+
+    local damage, killed = battle.skill_attack(player, enemy)
+    state:set_last_attack(damage, false, true)
+    state:start_skill_cooldown()
+    state:reset_idle_hint_timer()
+
+    if killed then
+        local dropName = texts.get_material_name(enemy.drop_key)
+        inventory.add(enemy.drop_key, 1)
+        state:set_last_drop_text(texts.format_material_gain(dropName, 1))
+        local upgraded = player.add_gold(enemy.reward_gold)
+        local kill_message = texts.format_skill_kill(enemy.name, damage, enemy.reward_gold)
+        state:set_message(kill_message)
+        logBridge:Log(kill_message)
+        enemy.respawn()
+
+        if upgraded then
+            local upgrade_message = texts.format_upgrade(player.level, player.attack)
+            state:set_message(upgrade_message)
+            logBridge:Log(upgrade_message)
+        end
+
+        self:save_progress()
+        return
+    end
+
+    local skill_message = texts.format_skill_damage(enemy.name, damage)
+    state:set_message(skill_message)
+    state:set_last_drop_text("")
+    logBridge:Log(skill_message)
+    self:save_progress()
+end
+
+function controller:get_game_state()
+    return state:export(player, enemy, inventory)
+end
+
+return controller

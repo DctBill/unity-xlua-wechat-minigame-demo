@@ -1,0 +1,109 @@
+local texts = {
+    labels = {
+        title = "Lua 学习案例：打史莱姆",
+        player_level = "玩家等级",
+        player_attack = "玩家攻击",
+        gold = "金币",
+        enemy = "敌人",
+        hp = "生命",
+        play_time = "游玩时长",
+        message = "消息",
+        inventory = "材料背包",
+        attack_button = "攻击一次",
+        skill_button = "强力一击",
+        reset_button = "重新开始",
+        seconds_suffix = "秒",
+        skill_cooldown = "技能冷却"
+    },
+    messages = {
+        start = "点击按钮或按空格攻击史莱姆",
+        reset = "游戏已重开，准备攻击史莱姆",
+        idle_hint = "继续攻击，攒金币升级攻击力",
+        crit_hint = "暴击!",
+        skill_ready = "强力一击已就绪",
+        skill_cooling = "强力一击冷却中，还需%.1f秒",
+        skill_attack = "你施放强力一击，对%s造成了%d伤害",
+        skill_kill = "强力一击击败%s！造成%d伤害，获得%d金币",
+        load_success = "已载入存档",
+        save_reset = "已创建新进度",
+        inventory_summary = "胶液:%d  厚胶核:%d  火焰碎片:%d",
+        material_gain = "+%d %s"
+    }
+}
+
+function texts.get_ui_texts()
+    return {
+        Title = texts.labels.title,
+        PlayerLevelLabel = texts.labels.player_level,
+        PlayerAttackLabel = texts.labels.player_attack,
+        GoldLabel = texts.labels.gold,
+        EnemyLabel = texts.labels.enemy,
+        HpLabel = texts.labels.hp,
+        PlayTimeLabel = texts.labels.play_time,
+        MessageLabel = texts.labels.message,
+        InventoryLabel = texts.labels.inventory,
+        AttackButtonLabel = texts.labels.attack_button,
+        SkillButtonLabel = texts.labels.skill_button,
+        ResetButtonLabel = texts.labels.reset_button,
+        SkillCooldownLabel = texts.labels.skill_cooldown,
+        SecondsSuffix = texts.labels.seconds_suffix
+    }
+end
+
+function texts.format_kill(enemyName, gold)
+    return string.format("你击败了%s，获得%d金币", enemyName, gold)
+end
+
+function texts.format_crit_kill(enemyName, damage, gold)
+    return string.format("暴击击败%s！造成%d伤害，获得%d金币", enemyName, damage, gold)
+end
+
+function texts.format_upgrade(level, attack)
+    return string.format("升级了！当前等级%d，攻击%d", level, attack)
+end
+
+function texts.format_damage(enemyName, damage)
+    return string.format("你对%s造成了%d伤害", enemyName, damage)
+end
+
+function texts.format_crit_damage(enemyName, damage)
+    return string.format("暴击！你对%s造成了%d伤害", enemyName, damage)
+end
+
+function texts.format_skill_damage(enemyName, damage)
+    return string.format(texts.messages.skill_attack, enemyName, damage)
+end
+
+function texts.format_skill_kill(enemyName, damage, gold)
+    return string.format(texts.messages.skill_kill, enemyName, damage, gold)
+end
+
+function texts.format_skill_cooling(remainingSeconds)
+    return string.format(texts.messages.skill_cooling, remainingSeconds)
+end
+
+function texts.get_material_name(materialKey)
+    if materialKey == "slime_gel" then
+        return "胶液"
+    end
+
+    if materialKey == "heavy_core" then
+        return "厚胶核"
+    end
+
+    if materialKey == "flame_shard" then
+        return "火焰碎片"
+    end
+
+    return materialKey
+end
+
+function texts.format_inventory_summary(slimeGel, heavyCore, flameShard)
+    return string.format(texts.messages.inventory_summary, slimeGel, heavyCore, flameShard)
+end
+
+function texts.format_material_gain(materialName, count)
+    return string.format(texts.messages.material_gain, count, materialName)
+end
+
+return texts

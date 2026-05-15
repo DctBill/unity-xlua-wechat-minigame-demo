@@ -1,0 +1,42 @@
+local config = require("Lua.slime_game.config")
+
+local player = {
+    level = config.player.start_level,
+    attack = config.player.start_attack,
+    gold = 0
+}
+
+function player.reset()
+    player.level = config.player.start_level
+    player.attack = config.player.start_attack
+    player.gold = 0
+end
+
+function player.add_gold(value)
+    player.gold = player.gold + value
+
+    local expectedLevel = math.floor(player.gold / config.player.gold_per_level) + config.player.start_level
+    if expectedLevel > player.level then
+        player.level = expectedLevel
+        player.attack = config.player.start_attack + (player.level - config.player.start_level) * config.player.attack_growth_per_level
+        return true
+    end
+
+    return false
+end
+
+function player.export_save()
+    return {
+        level = player.level,
+        attack = player.attack,
+        gold = player.gold
+    }
+end
+
+function player.import_save(data)
+    player.level = data.PlayerLevel or config.player.start_level
+    player.attack = data.PlayerAttack or config.player.start_attack
+    player.gold = data.Gold or 0
+end
+
+return player

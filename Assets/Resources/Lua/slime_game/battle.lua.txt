@@ -1,0 +1,22 @@
+local config = require("Lua.slime_game.config")
+
+local battle = {}
+
+function battle.attack(player, enemy)
+    local isCrit = math.random() < config.player.crit_chance
+    local damage = player.attack
+    if isCrit then
+        damage = math.floor(player.attack * config.player.crit_multiplier)
+    end
+
+    enemy.hp = math.max(0, enemy.hp - damage)
+    return damage, enemy.hp <= 0, isCrit
+end
+
+function battle.skill_attack(player, enemy)
+    local damage = math.floor(player.attack * config.player.skill_multiplier)
+    enemy.hp = math.max(0, enemy.hp - damage)
+    return damage, enemy.hp <= 0
+end
+
+return battle

@@ -1,0 +1,63 @@
+local config = require("Lua.slime_game.config")
+local enemy_defs = config.enemy.list
+
+local enemy = {
+    current_id = enemy_defs[1].id,
+    name = enemy_defs[1].name,
+    hp = enemy_defs[1].base_hp,
+    max_hp = enemy_defs[1].base_hp,
+    reward_gold = enemy_defs[1].gold,
+    drop_key = enemy_defs[1].drop_key,
+    color = enemy_defs[1].color,
+    defeated_count = 0
+}
+
+local function get_enemy_def(index)
+    return enemy_defs[((index - 1) % #enemy_defs) + 1]
+end
+
+local function apply_enemy_def(def)
+    enemy.current_id = def.id
+    enemy.name = def.name
+    enemy.reward_gold = def.gold
+    enemy.drop_key = def.drop_key
+    enemy.color = def.color
+    enemy.max_hp = def.base_hp + enemy.defeated_count * config.enemy.hp_growth_per_defeat
+    enemy.hp = enemy.max_hp
+end
+
+function enemy.reset()
+    enemy.defeated_count = 0
+    apply_enemy_def(get_enemy_def(1))
+end
+
+function enemy.respawn()
+    enemy.defeated_count = enemy.defeated_count + 1
+    apply_enemy_def(get_enemy_def(enemy.defeated_count + 1))
+end
+
+function enemy.export_save()
+    return {
+        name = enemy.name,
+        current_id = enemy.current_id,
+        hp = enemy.hp,
+        max_hp = enemy.max_hp,
+        reward_gold = enemy.reward_gold,
+        drop_key = enemy.drop_key,
+        color = enemy.color,
+        defeated_count = enemy.defeated_count
+    }
+end
+
+function enemy.import_save(data)
+    enemy.defeated_count = data.DefeatedCount or 0
+    local index = ((enemy.defeated_count % #enemy_defs) + 1)
+    apply_enemy_def(get_enemy_def(index))
+    enemy.current_id = data.EnemyId or enemy.current_id
+    enemy.name = data.EnemyName or enemy.name
+    enemy.hp = data.EnemyHp or enemy.hp
+    enemy.max_hp = data.EnemyMaxHp or enemy.max_hp
+    enemy.reward_gold = data.EnemyGold or enemy.reward_gold
+end
+
+return enemy
