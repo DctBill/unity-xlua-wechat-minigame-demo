@@ -49,5 +49,13 @@ sysinfo.txt
 *.ipa
 *.wasm
 
+# Build output directories
+[Bb]undles/
+minigame/
+webgl/
+
+# Tool / test data
+TextToolDatas/
+
 # Keep source assets and tracked generated bindings
 !Assets/XLua/Gen/
